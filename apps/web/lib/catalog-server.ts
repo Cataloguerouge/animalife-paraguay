@@ -8,7 +8,7 @@ const icons: Record<string,string> = {
   perros:"🐕", gatos:"🐈", bovinos:"🐄", equinos:"🐎", campo:"🌾", ofertas:"%"
 };
 
-function mapProduct(row:any, categoryName:string):Product {
+const localImages:Record<string,string> = {\n  "raguife-prime-combo-crecimiento": "/products/raguife-prime-combo-crecimiento.jpg"\n};\n\nfunction mapProduct(row:any, categoryName:string):Product {
   const animal = row.animal as Product["animal"];
   const image = row.image_path
     ? `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/product-images/${row.image_path}`
