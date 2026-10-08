@@ -117,6 +117,22 @@ Fixes committed:
 - Preserved verified real product photography where available.
 - Current homepage should visually prioritize photography and real artwork rather than emoji placeholders.
 
+### 2026-10-09 photographic asset recovery
+The production screenshots showed broken image elements after the previous data-URI AI asset implementation. This was treated as a real visual regression.
+
+Recovery:
+- Restored the photographic hero/category composition rather than retaining broken image placeholders.
+- Added a real binary WebP photographic asset at `apps/web/public/animalife/category-collage.webp`.
+- Implemented the image as local production CSS backgrounds so browser rendering does not depend on oversized data URIs.
+- The image contains dedicated dog/cat, bovine, equine and campo photography crops and is reused through precise background positioning.
+- Hero, category cards and editorial story now use the local binary asset.
+- Removed the dependency on `ANIMALIFE_AI_HERO` for the homepage visual layer.
+
+Commits:
+- `043db231e10972d8869e198941d78a149e96568d` — add approved animal photography asset.
+- `fba44e0106ad6fbcce780d34eaab406890d7f0eb` — restore photographic pet layout with real assets.
+- `3a7690a4500e8f65a64e06d73683a3c61370974` — use real photographic asset across hero and categories.
+
 ## Deployment history
 - Correct production Render service:
   - Name: `animalife-paraguay-web`
