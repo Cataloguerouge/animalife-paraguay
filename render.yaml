@@ -1,0 +1,13 @@
+# Render
+# The production app is a Next.js Node web service.
+# Do not configure this repository as a static site.
+services:
+  - type: web
+    name: animalife-paraguay-web
+    runtime: node
+    plan: free
+    region: virginia
+    branch: main
+    autoDeploy: true
+    buildCommand: npm install && npm run build:web
+    startCommand: npm run start:web
