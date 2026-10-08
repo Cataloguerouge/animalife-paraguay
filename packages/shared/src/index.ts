@@ -47,3 +47,5 @@ export interface DeliveryProvider {
 
 export const formatPYG = (value: number) =>
   `Gs. ${new Intl.NumberFormat("es-PY").format(value)}`;
+
+export { ANIMALIFE_AI_HERO } from "./ai-assets";
