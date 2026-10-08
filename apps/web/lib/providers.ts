@@ -1,7 +1,7 @@
 import type {DeliveryProvider,PaymentProvider,PaymentStatus,DeliveryStatus} from "@animalife/shared";
 
 export const mockPaymentProvider: PaymentProvider={
- async createPayment({orderId}){return {id:`mock_${orderId}`,url:"/checkout?payment=mock"};},
+ async createPayment({orderId}){return {id:`mock_${orderId}`,url:`/checkout?payment=mock&order=${orderId}`};},
  async getPaymentStatus(_id):Promise<PaymentStatus>{return "PENDING";},
  async cancelPayment(_id){},
  async refundPayment(_id){},
