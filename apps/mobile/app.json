@@ -1,0 +1,3 @@
+{
+  "expo":{"name":"Animalife Paraguay","slug":"animalife-paraguay","version":"1.0.0","orientation":"portrait","scheme":"animalife","userInterfaceStyle":"light","ios":{"supportsTablet":true,"bundleIdentifier":"com.animalife.paraguay"},"android":{"package":"com.animalife.paraguay"}}
+}
