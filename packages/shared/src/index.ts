@@ -31,7 +31,7 @@ export type PaymentStatus = "PENDING" | "AUTHORIZED" | "PAID" | "FAILED" | "REFU
 export type DeliveryStatus = "PENDING" | "READY" | "SHIPPED" | "IN_TRANSIT" | "DELIVERED" | "CANCELLED";
 
 export interface PaymentProvider {
-  createPayment(input: { orderId: string; amount: number; currency: Currency; returnUrl: string }): Promise<{ id: string; url?: string }>;
+  createPayment(input: { orderId: string; amount: number; currency: Currency; returnUrl: string; metadata?: Record<string, unknown> }): Promise<{ id: string; url?: string }>;
   getPaymentStatus(id: string): Promise<PaymentStatus>;
   cancelPayment(id: string): Promise<void>;
   refundPayment(id: string): Promise<void>;
