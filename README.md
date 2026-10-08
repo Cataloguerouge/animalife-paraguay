@@ -22,3 +22,6 @@ Copy `.env.example` to `.env.local` when Supabase credentials are available.
 
 ## Important
 Payment and delivery integrations are adapter-based and remain in mock/sandbox mode until real provider credentials and business accounts are authorized.
+
+## Development Journal
+The persistent implementation history, architecture decisions, deployment notes, visual decisions and future work are maintained in [`docs/DEVELOPMENT_JOURNAL.md`](docs/DEVELOPMENT_JOURNAL.md). Future development chats should read this journal before changing the project.
