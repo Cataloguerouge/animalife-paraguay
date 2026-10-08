@@ -3,5 +3,5 @@
   "private":true,
   "version":"1.0.0",
   "workspaces":["apps/web","apps/mobile","packages/shared"],
-  "scripts":{"dev:web":"npm --workspace apps/web run dev","build:web":"npm --workspace apps/web run build","lint":"npm --workspace apps/web run lint","typecheck":"npm --workspace packages/shared run typecheck && npm --workspace apps/web run typecheck"}
+  "scripts":{"dev:web":"npm --workspace apps/web run dev","build:web":"npm --workspace apps/web run build","start:web":"npm --workspace apps/web run start","lint":"npm --workspace apps/web run lint","typecheck":"npm --workspace packages/shared run typecheck && npm --workspace apps/web run typecheck"}
 }
