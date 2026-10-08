@@ -6,10 +6,19 @@ import SiteFooter from "../components/SiteFooter";
 
 const aiHero = ANIMALIFE_AI_HERO;
 
+function productVisual(product:any){
+  if(product.image) return product.image;
+  const animal=String(product.animal??"").toUpperCase();
+  const category=String(product.category??"").toLowerCase();
+  if(animal==="BOVINOS"||category.includes("bov")) return "/products/bovinos.svg";
+  if(animal==="EQUINOS"||category.includes("equin")) return "/products/equinos.svg";
+  if(animal==="CAMPO"||category.includes("campo")) return "/products/campo.svg";
+  if(animal==="GATOS"||category.includes("gato")||category.includes("perro")) return "/products/perros-gatos.svg";
+  return "/products/veterinario.svg";
+}
+
 function ProductArt({product}:{product:any}){
-  return <div className="product-art">
-    {product.image?<img src={product.image} alt=""/>:<div className="product-placeholder">{product.animal==="BOVINOS"?"🐄":product.animal==="EQUINOS"?"🐎":product.animal==="CAMPO"?"🌿":product.animal==="GATOS"?"🐈":"🐕"}</div>}
-  </div>
+  return <div className="product-art"><img src={productVisual(product)} alt="" /></div>
 }
 
 export default async function Home(){
@@ -69,7 +78,8 @@ export default async function Home(){
         </div>
         <div className="category-showcase premium-categories">
           {categories.filter(c=>c.name!=="Ofertas").slice(0,5).map(c=>
-            <Link className="category-tile" style={{backgroundImage:`url(${aiHero})`}} href={"/catalog?category="+encodeURIComponent(c.name)} key={c.slug}>
+            <Link className="category-tile" href={"/catalog?category="+encodeURIComponent(c.name)} key={c.slug}>
+              <img className="category-photo" src={c.slug.includes("equino")?"/products/equinos.svg":c.slug.includes("bovino")?"/products/bovinos.svg":c.slug.includes("campo")?"/products/campo.svg":c.slug.includes("veter")?"/products/veterinario.svg":"/products/perros-gatos.svg"} alt="" />
               <div className="category-number">0{categories.filter(x=>x.name!=="Ofertas").slice(0,5).findIndex(x=>x.slug===c.slug)+1}</div>
               <div className="tile-copy"><b>{c.name}</b><small>Descubrir <span>↗</span></small></div>
             </Link>
