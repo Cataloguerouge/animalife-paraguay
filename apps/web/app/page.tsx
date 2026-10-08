@@ -4,14 +4,6 @@ import {getCatalogCategories,getCatalogProducts} from "../lib/catalog-server";
 import SiteHeader from "../components/SiteHeader";
 import SiteFooter from "../components/SiteFooter";
 
-const categoryImages:Record<string,string>={
-  Perros:"https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=1100&q=88",
-  Gatos:"https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=1100&q=88",
-  Bovinos:"https://images.unsplash.com/photo-1527153857715-3908f2bae5e8?auto=format&fit=crop&w=1100&q=88",
-  Equinos:"https://images.unsplash.com/photo-1551884831-bbf3cdc6469e?auto=format&fit=crop&w=1100&q=88",
-  Campo:"https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1100&q=88"
-};
-
 const aiHero = ANIMALIFE_AI_HERO;
 
 function ProductArt({product}:{product:any}){
