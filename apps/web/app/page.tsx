@@ -1,5 +1,5 @@
 import Link from "next/link";
-import {formatPYG} from "@animalife/shared";
+import {formatPYG, ANIMALIFE_AI_HERO} from "@animalife/shared";
 import {getCatalogCategories,getCatalogProducts} from "../lib/catalog-server";
 import SiteHeader from "../components/SiteHeader";
 import SiteFooter from "../components/SiteFooter";
@@ -12,10 +12,7 @@ const categoryImages:Record<string,string>={
   Campo:"https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1100&q=88"
 };
 
-const heroDog="https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=1300&q=90";
-const heroCat="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=700&q=90";
-const heroCow="https://images.unsplash.com/photo-1527153857715-3908f2bae5e8?auto=format&fit=crop&w=700&q=90";
-const heroHorse="https://images.unsplash.com/photo-1551884831-bbf3cdc6469e?auto=format&fit=crop&w=700&q=90";
+const aiHero = ANIMALIFE_AI_HERO;
 
 function ProductArt({product}:{product:any}){
   return <div className="product-art">
@@ -51,12 +48,12 @@ export default async function Home(){
 
           <div className="hero-gallery">
             <div className="hero-main-photo">
-              <img src={heroDog} alt="Perro disfrutando del exterior"/>
+              <img src={aiHero} alt="Perro y animales disfrutando del exterior"/>
               <div className="hero-photo-caption"><span>PERROS</span><b>Compañeros de cada día</b></div>
             </div>
-            <div className="hero-small-photo hero-cat-photo"><img src={heroCat} alt="Gato"/><span>GATOS</span></div>
-            <div className="hero-small-photo hero-cow-photo"><img src={heroCow} alt="Bovino"/><span>BOVINOS</span></div>
-            <div className="hero-small-photo hero-horse-photo"><img src={heroHorse} alt="Caballo"/><span>EQUINOS</span></div>
+            <div className="hero-small-photo hero-cat-photo"><img src={aiHero} alt="Gato"/><span>GATOS</span></div>
+            <div className="hero-small-photo hero-cow-photo"><img src={aiHero} alt="Bovino"/><span>BOVINOS</span></div>
+            <div className="hero-small-photo hero-horse-photo"><img src={aiHero} alt="Caballo"/><span>EQUINOS</span></div>
             <div className="hero-orb">AL<span>·</span></div>
           </div>
         </div>
@@ -80,7 +77,7 @@ export default async function Home(){
         </div>
         <div className="category-showcase premium-categories">
           {categories.filter(c=>c.name!=="Ofertas").slice(0,5).map(c=>
-            <Link className="category-tile" style={{backgroundImage:`url(${categoryImages[c.name]||""})`}} href={"/catalog?category="+encodeURIComponent(c.name)} key={c.slug}>
+            <Link className="category-tile" style={{backgroundImage:`url(${aiHero})`}} href={"/catalog?category="+encodeURIComponent(c.name)} key={c.slug}>
               <div className="category-number">0{categories.filter(x=>x.name!=="Ofertas").slice(0,5).findIndex(x=>x.slug===c.slug)+1}</div>
               <div className="tile-copy"><b>{c.name}</b><small>Descubrir <span>↗</span></small></div>
             </Link>
@@ -110,7 +107,7 @@ export default async function Home(){
     <section className="section story-section">
       <div className="container story-layout">
         <div className="story-image">
-          <img src={heroCow} alt="Animal de producción en el campo"/>
+          <img src={aiHero} alt="Animales de producción en el campo"/>
           <div className="story-label">ANIMALIFE<br/><span>PARAGUAY</span></div>
         </div>
         <div className="story-copy">
