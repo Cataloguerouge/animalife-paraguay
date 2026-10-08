@@ -106,3 +106,16 @@ body{background:var(--paper);letter-spacing:-.01em}
  .premium-categories .category-tile:first-child{height:245px}.premium-categories .category-tile{height:205px}.premium-categories .tile-copy b{font-size:18px}
  .story-points{grid-template-columns:1fr}.story-points div{display:grid;grid-template-columns:35px 1fr;align-items:start}.story-points b{margin:0}
 }
+
+
+/* AI photography direction */
+.hero-main-photo img{object-position:43% center}
+.hero-cat-photo img{object-position:67% center}
+.hero-cow-photo img{object-position:86% center}
+.hero-horse-photo img{object-position:58% center}
+.premium-categories .category-tile:nth-child(1){background-position:22% center}
+.premium-categories .category-tile:nth-child(2){background-position:48% center}
+.premium-categories .category-tile:nth-child(3){background-position:80% center}
+.premium-categories .category-tile:nth-child(4){background-position:58% center}
+.premium-categories .category-tile:nth-child(5){background-position:12% center}
+.story-image img{object-position:78% center}
