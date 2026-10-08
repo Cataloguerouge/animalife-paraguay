@@ -1,7 +1,9 @@
 node_modules
-.expo
-.env
-.env.*
-dist
 .next
+.expo
+dist
+.env
+.env.local
 .DS_Store
+*.log
+coverage

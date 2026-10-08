@@ -1,1 +1,7 @@
-{"name":"animalife-paraguay","private":true,"version":"0.1.0","workspaces":["apps/*","packages/*"],"scripts":{"dev:web":"npm --workspace apps/web run dev","start:mobile":"npm --workspace apps/mobile run start","build:web":"npm --workspace apps/web run build","lint":"npm run lint --workspaces --if-present"},"devDependencies":{"typescript":"^5.7.3"}}
+{
+  "name":"animalife-paraguay",
+  "private":true,
+  "version":"1.0.0",
+  "workspaces":["apps/web","apps/mobile","packages/shared"],
+  "scripts":{"dev:web":"npm --workspace apps/web run dev","build:web":"npm --workspace apps/web run build","lint":"npm --workspace apps/web run lint","typecheck":"npm --workspace packages/shared run typecheck && npm --workspace apps/web run typecheck"}
+}
