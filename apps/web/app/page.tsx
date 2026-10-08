@@ -1,5 +1,5 @@
 import Link from "next/link";
-import {formatPYG, ANIMALIFE_AI_HERO} from "@animalife/shared";
+import {formatPYG} from "@animalife/shared";
 import {getCatalogCategories,getCatalogProducts} from "../lib/catalog-server";
 import SiteHeader from "../components/SiteHeader";
 import SiteFooter from "../components/SiteFooter";
@@ -58,12 +58,12 @@ export default async function Home(){
 
           <div className="hero-gallery">
             <div className="hero-main-photo">
-              <img src={aiHero} alt="Perro y animales disfrutando del exterior"/>
+              <div className="hero-photo-bg hero-photo-pets" role="img" aria-label="Perro y gato disfrutando del exterior"></div>
               <div className="hero-photo-caption"><span>PERROS</span><b>Compañeros de cada día</b></div>
             </div>
-            <div className="hero-small-photo hero-cat-photo"><img src={aiHero} alt="Gato"/><span>GATOS</span></div>
-            <div className="hero-small-photo hero-cow-photo"><img src={aiHero} alt="Bovino"/><span>BOVINOS</span></div>
-            <div className="hero-small-photo hero-horse-photo"><img src={aiHero} alt="Caballo"/><span>EQUINOS</span></div>
+            <div className="hero-small-photo hero-cat-photo"><div className="hero-photo-bg hero-photo-cat"></div><span>GATOS</span></div>
+            <div className="hero-small-photo hero-cow-photo"><div className="hero-photo-bg hero-photo-cow"></div><span>BOVINOS</span></div>
+            <div className="hero-small-photo hero-horse-photo"><div className="hero-photo-bg hero-photo-horse"></div><span>EQUINOS</span></div>
             <div className="hero-orb">AL<span>·</span></div>
           </div>
         </div>
@@ -88,7 +88,7 @@ export default async function Home(){
         <div className="category-showcase premium-categories">
           {categories.filter(c=>c.name!=="Ofertas").slice(0,5).map(c=>
             <Link className="category-tile" href={"/catalog?category="+encodeURIComponent(c.name)} key={c.slug}>
-              <img className={categoryPhotoClass(c.slug)} src={aiHero} alt="" />
+              <div className={categoryPhotoClass(c.slug)} aria-hidden="true"></div>
               <div className="category-number">0{categories.filter(x=>x.name!=="Ofertas").slice(0,5).findIndex(x=>x.slug===c.slug)+1}</div>
               <div className="tile-copy"><b>{c.name}</b><small>Descubrir <span>↗</span></small></div>
             </Link>
@@ -118,7 +118,7 @@ export default async function Home(){
     <section className="section story-section">
       <div className="container story-layout">
         <div className="story-image">
-          <img src={aiHero} alt="Animales de producción en el campo"/>
+          <div className="story-photo story-photo-field" role="img" aria-label="Paisaje rural de Paraguay"></div>
           <div className="story-label">ANIMALIFE<br/><span>PARAGUAY</span></div>
         </div>
         <div className="story-copy">
