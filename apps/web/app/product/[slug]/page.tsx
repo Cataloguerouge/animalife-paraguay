@@ -3,7 +3,7 @@ import {notFound} from "next/navigation";
 import {getProduct} from "../../../lib/catalog";
 import {formatPYG} from "@animalife/shared";
 import AddToCart from "../../../components/AddToCart";
-function Art({type}:{type:string}){return <div className={`product-art detail ${type}`}><span>{type==="bovinos"?"🐄":type==="horse"?"🐎":type==="field"?"🌾":"🐕"}</span></div>}
+function Art({type}:{type:string}){const src=type==="bovinos"?"/products/bovinos.svg":type==="horse"?"/products/equinos.svg":type==="field"?"/products/campo.svg":"/products/raguife-prime-combo-crecimiento.jpg";return <div className={`product-art detail ${type}`}><img src={src} alt="" /></div>}
 export default async function ProductPage({params}:{params:Promise<{slug:string}>}){
  const {slug}=await params; const p=getProduct(slug); if(!p) notFound();
  return <main><header className="site-header"><div className="header-top container"><Link className="brand" href="/">ANIMALIFE <small>AGROVETERINARIA</small></Link><div className="search"><input placeholder="¿Qué estás buscando?"/><button>Buscar</button></div><nav className="header-actions"><Link href="/account">Mi cuenta</Link><Link href="/cart">Carrito</Link></nav></div></header>

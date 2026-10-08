@@ -3,7 +3,7 @@ import Link from "next/link";
 import {useMemo,useState} from "react";
 import {products,categories} from "../../lib/catalog";
 import {formatPYG} from "@animalife/shared";
-function Art({type}:{type:string}){return <div className={`product-art ${type}`}><span>{type==="bovinos"?"🐄":type==="horse"?"🐎":type==="field"?"🌾":"🐕"}</span></div>}
+function Art({type}:{type:string}){const src=type==="bovinos"?"/products/bovinos.svg":type==="horse"?"/products/equinos.svg":type==="field"?"/products/campo.svg":"/products/raguife-prime-combo-crecimiento.jpg";return <div className={`product-art ${type}`}><img src={src} alt="" /></div>}
 export default function Catalog(){
  const [query,setQuery]=useState(""); const [category,setCategory]=useState("Todos");
  const filtered=useMemo(()=>products.filter(p=>(category==="Todos"||p.category===category)&&p.name.toLowerCase().includes(query.toLowerCase())),[query,category]);
