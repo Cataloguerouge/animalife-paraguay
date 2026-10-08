@@ -26,7 +26,7 @@ for insert
 to authenticated
 with check (
   bucket_id = 'product-images'
-  and public.is_admin()
+  and (select private.is_admin())
 );
 
 drop policy if exists "admins update product images" on storage.objects;
@@ -36,11 +36,11 @@ for update
 to authenticated
 using (
   bucket_id = 'product-images'
-  and public.is_admin()
+  and (select private.is_admin())
 )
 with check (
   bucket_id = 'product-images'
-  and public.is_admin()
+  and (select private.is_admin())
 );
 
 drop policy if exists "admins delete product images" on storage.objects;
@@ -50,5 +50,5 @@ for delete
 to authenticated
 using (
   bucket_id = 'product-images'
-  and public.is_admin()
+  and (select private.is_admin())
 );
