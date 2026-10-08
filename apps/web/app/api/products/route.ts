@@ -1,7 +1,7 @@
 import {NextResponse} from "next/server";
 import {createClient} from "../../../lib/supabase-server";
 
-export async function GET(req:Request){
+const localImages:Record<string,string> = { "raguife-prime-combo-crecimiento": "/products/raguife-prime-combo-crecimiento.jpg" };\n\nexport async function GET(req:Request){
   const supabase=await createClient();
   if(!supabase)return NextResponse.json({products:[]},{status:503});
   const ids=new URL(req.url).searchParams.get("ids")?.split(",").filter(Boolean) ?? [];
@@ -15,7 +15,7 @@ export async function GET(req:Request){
     id:p.id,sku:p.sku,slug:p.slug,name:p.name,brand:p.brand,category:catMap.get(p.category_id)??"Otros",
     animal:p.animal,description:p.description,packageSize:p.package_size,
     price:Number(p.price_pyg||0),salePrice:p.sale_price_pyg==null?undefined:Number(p.sale_price_pyg),
-    stock:Number(p.stock||0),image:p.image_path?`${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/product-images/${p.image_path}`:"",
+    stock:Number(p.stock||0),image:p.image_path?`${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/product-images/${p.image_path}`:(localImages[p.slug]??""),
     verified:Boolean(p.verified),regulated:Boolean(p.regulated),requiresPrescription:Boolean(p.requires_prescription),
     featured:Boolean(p.featured),active:Boolean(p.active)
   }));
