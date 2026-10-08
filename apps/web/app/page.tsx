@@ -21,6 +21,15 @@ function ProductArt({product}:{product:any}){
   return <div className="product-art"><img src={productVisual(product)} alt="" /></div>
 }
 
+function categoryPhotoClass(slug:string){
+  const s=slug.toLowerCase();
+  if(s.includes("bovino")) return "category-photo category-photo-bovinos";
+  if(s.includes("equino")) return "category-photo category-photo-equinos";
+  if(s.includes("campo")) return "category-photo category-photo-campo";
+  if(s.includes("veter")) return "category-photo category-photo-veterinario";
+  return "category-photo category-photo-perros-gatos";
+}
+
 export default async function Home(){
   const [categories,products]=await Promise.all([getCatalogCategories(),getCatalogProducts()]);
   const featured=products.filter(p=>p.featured).slice(0,4);
@@ -79,7 +88,7 @@ export default async function Home(){
         <div className="category-showcase premium-categories">
           {categories.filter(c=>c.name!=="Ofertas").slice(0,5).map(c=>
             <Link className="category-tile" href={"/catalog?category="+encodeURIComponent(c.name)} key={c.slug}>
-              <img className="category-photo" src={c.slug.includes("equino")?"/products/equinos.svg":c.slug.includes("bovino")?"/products/bovinos.svg":c.slug.includes("campo")?"/products/campo.svg":c.slug.includes("veter")?"/products/veterinario.svg":"/products/perros-gatos.svg"} alt="" />
+              <img className={categoryPhotoClass(c.slug)} src={aiHero} alt="" />
               <div className="category-number">0{categories.filter(x=>x.name!=="Ofertas").slice(0,5).findIndex(x=>x.slug===c.slug)+1}</div>
               <div className="tile-copy"><b>{c.name}</b><small>Descubrir <span>↗</span></small></div>
             </Link>
