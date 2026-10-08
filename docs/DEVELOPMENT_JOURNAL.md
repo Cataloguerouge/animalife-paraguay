@@ -86,6 +86,20 @@ Reference/design:
 - Shared AI hero asset lives in `packages/shared/src/ai-assets.ts`.
 - The current production visual direction should keep photographic animal imagery prominent.
 
+### 2026-10-09 visual correction — category section
+Problem found in production QA: the category section still rendered simplistic SVG/icon artwork and an intentionally oversized first card, which was visibly below the approved premium standard.
+
+Fixes committed:
+- Replaced category SVG placeholders in the homepage with the shared AI photographic animal asset.
+- Added animal-specific crop positioning for companion animals, bovinos, equinos, campo and veterinary imagery.
+- Normalized the desktop category grid to five balanced premium cards instead of the oversized first-card layout.
+- Improved card proportions, image fill, hover treatment and photographic contrast.
+- Kept the mobile layout balanced rather than making the first category a full-width oversized tile.
+
+Commits:
+- `808da4867c1f08fb11ade0a8f1596cb8aa224a0f` — replace placeholder category art with premium animal photography.
+- `8d5eee163a68210b259e690ef8846f1cd53d389a` — normalize premium category grid and restore photographic imagery.
+
 ### 2026-10-08 visual correction
 Problem found: the homepage had premium JSX sections but the stylesheet did not contain the corresponding `hero-gallery`, premium category, editorial story and premium CTA rules. This caused the frontend to look substantially worse than the approved design.
 
@@ -149,7 +163,7 @@ Confirmed example data includes:
 - Raguife Prime references are design/demo references unless verified as current inventory.
 
 ## Next work priorities
-1. Verify the latest production deployment after the premium CSS/image correction.
+1. Verify the latest production deployment after the 2026-10-09 category photography/grid correction.
 2. Delete the obsolete Render Static Site `animalife-paraguay`.
 3. Continue visual QA against the approved collage at desktop and mobile widths.
 4. Replace remaining generic/category fallback art with verified product photography as product data becomes available.
