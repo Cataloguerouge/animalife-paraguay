@@ -1,5 +1,5 @@
 import Link from "next/link";
-import {formatPYG} from "@animalife/shared";
+import {formatPYG,ANIMALIFE_AI_HERO} from "@animalife/shared";
 import {getCatalogCategories,getCatalogProducts} from "../lib/catalog-server";
 import SiteHeader from "../components/SiteHeader";
 import SiteFooter from "../components/SiteFooter";
@@ -56,12 +56,12 @@ export default async function Home(){
 
           <div className="hero-gallery">
             <div className="hero-main-photo">
-              <div className="hero-photo-bg hero-photo-pets" role="img" aria-label="Perro y gato disfrutando del exterior"></div>
+              <img className="hero-photo-bg hero-photo-pets" src={ANIMALIFE_AI_HERO} alt="Perro y gato disfrutando del exterior" />
               <div className="hero-photo-caption"><span>PERROS</span><b>Compañeros de cada día</b></div>
             </div>
-            <div className="hero-small-photo hero-cat-photo"><div className="hero-photo-bg hero-photo-cat"></div><span>GATOS</span></div>
-            <div className="hero-small-photo hero-cow-photo"><div className="hero-photo-bg hero-photo-cow"></div><span>BOVINOS</span></div>
-            <div className="hero-small-photo hero-horse-photo"><div className="hero-photo-bg hero-photo-horse"></div><span>EQUINOS</span></div>
+            <div className="hero-small-photo hero-cat-photo"><img className="hero-photo-bg hero-photo-cat" src="/products/perros-gatos.svg" alt="" /><span>GATOS</span></div>
+            <div className="hero-small-photo hero-cow-photo"><img className="hero-photo-bg hero-photo-cow" src="/products/bovinos.svg" alt="" /><span>BOVINOS</span></div>
+            <div className="hero-small-photo hero-horse-photo"><img className="hero-photo-bg hero-photo-horse" src="/products/equinos.svg" alt="" /><span>EQUINOS</span></div>
             <div className="hero-orb">AL<span>·</span></div>
           </div>
         </div>
@@ -116,7 +116,7 @@ export default async function Home(){
     <section className="section story-section">
       <div className="container story-layout">
         <div className="story-image">
-          <div className="story-photo story-photo-field" role="img" aria-label="Paisaje rural de Paraguay"></div>
+          <img className="story-photo story-photo-field" src="/products/campo.svg" alt="Paisaje rural y soluciones para el campo" />
           <div className="story-label">ANIMALIFE<br/><span>PARAGUAY</span></div>
         </div>
         <div className="story-copy">
