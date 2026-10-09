@@ -117,21 +117,19 @@ Fixes committed:
 - Preserved verified real product photography where available.
 - Current homepage should visually prioritize photography and real artwork rather than emoji placeholders.
 
-### 2026-10-09 photographic asset recovery
-The production screenshots showed broken image elements after the previous data-URI AI asset implementation. This was treated as a real visual regression.
+### 2026-10-09 photographic asset recovery — verification correction
+The attempted local file `apps/web/public/animalife/category-collage.webp` was not verified as a valid WebP image. It must not be treated as approved photography and is being removed from active use.
 
-Recovery:
-- Restored the photographic hero/category composition rather than retaining broken image placeholders.
-- Added a real binary WebP photographic asset at `apps/web/public/animalife/category-collage.webp`.
-- Implemented the image as local production CSS backgrounds so browser rendering does not depend on oversized data URIs.
-- The image contains dedicated dog/cat, bovine, equine and campo photography crops and is reused through precise background positioning.
-- Hero, category cards and editorial story now use the local binary asset.
-- Removed the dependency on `ANIMALIFE_AI_HERO` for the homepage visual layer.
+Recovery applied:
+- Restored the existing shared `ANIMALIFE_AI_HERO` asset for the main pet hero; its embedded data URI has a WebP header.
+- Used existing local category artwork for cat, bovine, equine, veterinary and campo tiles as a safe fallback rather than referencing the unverified collage file.
+- Corrected a stale `ANIMALIFE_AI_HERO` reference that caused the Render build to fail TypeScript checking.
+- Dedicated approved photographic files for each animal/category still need to be supplied through a verified asset workflow (Figma/MagicPath connection or another verified source). Do not claim those dedicated photos are complete yet.
 
 Commits:
-- `043db231e10972d8869e198941d78a149e96568d` — add approved animal photography asset.
-- `fba44e0106ad6fbcce780d34eaab406890d7f0eb` — restore photographic pet layout with real assets.
-- `3a7690a4500e8f65a64e06d73683a3c61370974` — use real photographic asset across hero and categories.
+- `c51e8915d8351c883b421aa8f7fd9258947b2d24` — remove stale AI hero reference.
+- `36217871c6787b55db70eef73fe7928f6796d39d` — restore valid hero and category image sources.
+- `6f508644aaae648b7b88cacc4d610ba2610d5b52` — use verified fallback image sources.
 
 ## Deployment history
 - Correct production Render service:
