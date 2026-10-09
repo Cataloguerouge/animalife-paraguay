@@ -228,3 +228,10 @@ Before changing code:
 - GitHub source commit: https://github.com/Cataloguerouge/animalife-paraguay/commit/45b7d0b4f3d7f2b15696226ee0a693b71c7dd2cb
 - Follow-up fix for URL detection: https://github.com/Cataloguerouge/animalife-paraguay/commit/3cd42ed7ac248ac7348db9756ca96df6020a3e1c
 - Render auto-deploy triggered for the follow-up commit; status was `update_in_progress` at the time of this check. The production URL could not be opened by the available web fetch, so do not claim an independent browser-level HTTP/visual smoke test was completed. Check Render's deploy status and manually review external image rendering before declaring the live release fully verified.
+
+
+## 2026-10-09 — Production mobile image rendering fix
+- Follow-up from the real iPhone screenshot: the main hero image was showing a broken-image indicator, and category tiles fell back to illustrated SVG artwork instead of showing their assigned photographs.
+- Updated `apps/web/app/page.tsx` to use a direct HTTPS hero photo URL instead of the embedded shared data-URI asset, and changed category tiles from CSS-background-only divs to real `img` elements with their category-specific image URLs and lazy loading. This makes the browser request/render images through the normal image element path and exposes proper image loading behavior.
+- Commit: `7e89240fa2e5d452cf8e46dc365aa2713eaae560`.
+- Validation still required after auto-deploy: confirm the Render deploy is live, inspect the same iPhone viewport, and check that each external image URL returns successfully. External image hosting remains dependent on network availability; do not claim browser QA complete until visually checked.
