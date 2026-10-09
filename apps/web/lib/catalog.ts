@@ -15,6 +15,7 @@ export const categories=[
   {name:"Bovinos",icon:"🐄"},
   {name:"Equinos",icon:"🐎"},
   {name:"Campo",icon:"🌾"},
+  {name:"Veterinaria",icon:"✚"},
   {name:"Ofertas",icon:"%" }
 ];
 

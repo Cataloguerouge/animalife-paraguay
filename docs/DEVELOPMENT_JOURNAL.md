@@ -206,3 +206,17 @@ Before changing code:
 - Production homepage update: category cards now use animal/campo photographic URLs with a dark readability overlay. Commit: 587eab73301b3415f4d7fd17cb40750643b9db4a.
 - Important: category imagery is loaded from Unsplash URLs, so images require external network access. Product cards in MagicPath are illustrative mock data and must not be treated as verified inventory/pricing. The live storefront continues to use the real catalog/backend.
 - Remaining launch blockers: real Pagopar merchant credentials and controlled payment test; real courier integration/credentials; native iOS/Android signed builds and EAS credentials; final browser QA of external image URLs on production.
+
+
+## 2026-10-09 — Six-category demo catalog and production deployment
+- Supabase project `mdswufrddbzfbgsalksq`: migration `seed_animalife_demo_catalog_36` applied successfully.
+- Added the missing `Veterinaria` category and 36 demo product records: exactly six each for Perros, Gatos, Bovinos, Equinos, Campo and Veterinaria. Preserved the original six non-demo products.
+- Demo products use stable `DEMO-*` SKUs, illustrative descriptions and Guaraní prices, unique external Pexels image URLs, stock=0, verified=false, featured=false. They are not verified inventory and are not purchasable until real stock/pricing/records are confirmed.
+- Added the repeatable seed migration source at `supabase/migrations/20261009120000_seed_animalife_demo_catalog_36.sql`.
+- `apps/web/lib/catalog-server.ts` now recognizes absolute HTTP(S) image URLs in `products.image_path`; existing relative Supabase Storage paths continue to work.
+- Homepage category image mapping now differentiates dogs from cats, plus cattle, horses, veterinary care and rural field imagery. The homepage category showcase now renders six non-offer categories. The no-Supabase fallback category list includes Veterinaria.
+- Catalog and product detail images now have descriptive alt text; catalog product images use lazy loading.
+- MagicPath design references: web https://designs.magicpath.ai/v1/clever-flood-5220; mobile https://designs.magicpath.ai/v1/smooth-world-9042; canvas https://www.magicpath.ai/files/459271459794206720. These are separate design prototypes; the deployed source remains this Next.js/Supabase monorepo.
+- Render service: `animalife-paraguay-web`, ID `srv-db3sednlk1mc73coacgg`, connected to GitHub branch `main`, automatic deployment on commit. Production URL: https://animalife-paraguay-web.onrender.com.
+- Test notes: Supabase migration returned success. Before marking this release done, verify live counts (36 DEMO rows and 42 total products), inspect GitHub commit/status, check Render deployment, and run production HTTP smoke checks. External Pexels/Unsplash image requests still need rendered-browser validation.
+- Commercial launch caveat: demo products are explicitly unverified and have zero stock; remove/replace them before live sales.

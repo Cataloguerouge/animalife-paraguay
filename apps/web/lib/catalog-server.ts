@@ -15,7 +15,9 @@ const localImages: Record<string,string> = {
 function mapProduct(row:any, categoryName:string):Product {
   const animal = row.animal as Product["animal"];
   const image = row.image_path
-    ? `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/product-images/${row.image_path}`
+    ? (/^https?:\\/\\//i.test(row.image_path)
+      ? row.image_path
+      : `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/product-images/${row.image_path}`)
     : (localImages[row.slug] ?? "");
   return {
     id:row.id, sku:row.sku, slug:row.slug, name:row.name, brand:row.brand ?? undefined,

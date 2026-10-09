@@ -4,7 +4,7 @@ import {useMemo,useState} from "react";
 import type {Product} from "@animalife/shared";
 import {formatPYG} from "@animalife/shared";
 import type {CatalogCategory} from "../lib/catalog-server";
-function Art({product}:{product:Product}){return <div className="product-art">{product.image?<img src={product.image} alt=""/>:<div className="product-placeholder">{product.animal==="BOVINOS"?"🐄":product.animal==="EQUINOS"?"🐎":product.animal==="CAMPO"?"🌿":product.animal==="GATOS"?"🐈":"🐕"}</div>}</div>}
+function Art({product}:{product:Product}){return <div className="product-art">{product.image?<img src={product.image} alt={product.name} loading="lazy"/>:<div className="product-placeholder">{product.animal==="BOVINOS"?"🐄":product.animal==="EQUINOS"?"🐎":product.animal==="CAMPO"?"🌿":product.animal==="GATOS"?"🐈":"🐕"}</div>}</div>}
 export default function CatalogClient({products,categories,initialCategory="Todos",initialQuery=""}:{products:Product[];categories:CatalogCategory[];initialCategory?:string;initialQuery?:string}){
  const [query,setQuery]=useState(initialQuery);const [category,setCategory]=useState(initialCategory);const [sort,setSort]=useState("relevance");
  const filtered=useMemo(()=>{let list=products.filter(p=>(category==="Todos"||p.category===category||category==="Ofertas"&&p.salePrice));list=list.filter(p=>(p.name+" "+(p.brand??"")).toLowerCase().includes(query.toLowerCase()));if(sort==="price")list=[...list].sort((a,b)=>(a.salePrice??a.price)-(b.salePrice??b.price));return list},[products,category,query,sort]);
