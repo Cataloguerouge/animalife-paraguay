@@ -220,3 +220,11 @@ Before changing code:
 - Render service: `animalife-paraguay-web`, ID `srv-db3sednlk1mc73coacgg`, connected to GitHub branch `main`, automatic deployment on commit. Production URL: https://animalife-paraguay-web.onrender.com.
 - Test notes: Supabase migration returned success. Before marking this release done, verify live counts (36 DEMO rows and 42 total products), inspect GitHub commit/status, check Render deployment, and run production HTTP smoke checks. External Pexels/Unsplash image requests still need rendered-browser validation.
 - Commercial launch caveat: demo products are explicitly unverified and have zero stock; remove/replace them before live sales.
+
+
+### Verification results — 2026-10-09
+- GitHub Actions CI run for commit `3cd42ed7ac248ac7348db9756ca96df6020a3e1c`: **success**. Web job passed dependency install, TypeScript typecheck and `npm run build:web`; mobile job passed dependency install and mobile TypeScript typecheck. Run: https://github.com/Cataloguerouge/animalife-paraguay/actions/runs/37940244629
+- Supabase verification query confirmed 36 demo products, 42 total products, and 36 distinct demo image URLs. Grouped verification confirmed six demo products, six distinct image URLs, and six zero-stock/unverified records in each of Perros, Gatos, Bovinos, Equinos, Campo and Veterinaria.
+- GitHub source commit: https://github.com/Cataloguerouge/animalife-paraguay/commit/45b7d0b4f3d7f2b15696226ee0a693b71c7dd2cb
+- Follow-up fix for URL detection: https://github.com/Cataloguerouge/animalife-paraguay/commit/3cd42ed7ac248ac7348db9756ca96df6020a3e1c
+- Render auto-deploy triggered for the follow-up commit; status was `update_in_progress` at the time of this check. The production URL could not be opened by the available web fetch, so do not claim an independent browser-level HTTP/visual smoke test was completed. Check Render's deploy status and manually review external image rendering before declaring the live release fully verified.
