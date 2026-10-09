@@ -1,0 +1,29 @@
+{
+  "projectName": "Animalife Paraguay — Approved Storefront Design",
+  "projectId": "459271459794206720",
+  "sourceStatus": "awaiting-authenticated-source-export",
+  "components": [
+    {
+      "name": "approved-responsive-storefront",
+      "componentId": "459272255592108032",
+      "generatedName": "clever-flood-5220",
+      "previewUrl": "https://designs.magicpath.ai/v1/clever-flood-5220",
+      "targetDirectory": "web/"
+    },
+    {
+      "name": "approved-mobile-prototype",
+      "componentId": "459272566557798400",
+      "generatedName": "smooth-world-9042",
+      "previewUrl": "https://designs.magicpath.ai/v1/smooth-world-9042",
+      "targetDirectory": "mobile/"
+    }
+  ],
+  "blocker": {
+    "code": "EXTERNAL_AGENT_API_QUOTA_EXCEEDED",
+    "used": 50,
+    "limit": 50,
+    "detail": "Authenticated MagicPath source inspection/export tools are blocked by exhausted external-agent API quota. No source ZIP was available in the workspace."
+  },
+  "productionIntegration": "not-started",
+  "note": "Do not represent this manifest as the exported source."
+}
