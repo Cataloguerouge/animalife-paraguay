@@ -235,3 +235,12 @@ Before changing code:
 - Updated `apps/web/app/page.tsx` to use a direct HTTPS hero photo URL instead of the embedded shared data-URI asset, and changed category tiles from CSS-background-only divs to real `img` elements with their category-specific image URLs and lazy loading. This makes the browser request/render images through the normal image element path and exposes proper image loading behavior.
 - Commit: `7e89240fa2e5d452cf8e46dc365aa2713eaae560`.
 - Validation still required after auto-deploy: confirm the Render deploy is live, inspect the same iPhone viewport, and check that each external image URL returns successfully. External image hosting remains dependent on network availability; do not claim browser QA complete until visually checked.
+
+
+## 2026-10-09 — Canonical path and legacy image cleanup
+- Root cause of the repeated visual regression: `apps/web/app/globals.css` had accumulated multiple historical override blocks. The final overrides still referenced the unverified/missing `/animalife/category-collage.webp` asset and forced category images back to old SVG backgrounds, overriding the current JSX and making screenshots differ from the intended current design.
+- Removed the legacy image override tail and its stale collage/SVG background rules. The current stylesheet now styles real `img` elements, with `src` as the single source of image truth.
+- Replaced remaining hero inset illustrations and the story field illustration with the same category-specific HTTPS photo mapping used by category tiles.
+- Commits: `24ae4655b566c99e83c2244d06c037df29b4f18a` (consistent category photo sources), `f00643dc5736a23046a165f846b9df606dca5c74` (remove legacy CSS overrides and stale paths).
+- Do not use or restore `/animalife/category-collage.webp`; it was never verified as a valid production asset. The old Render Static Site named `animalife-paraguay` is not the canonical service; `animalife-paraguay-web` remains the only intended production service. Service deletion must be performed in the correct Render workspace and only after confirming service identity.
+- Deployment/visual verification remains open: confirm the latest main commit builds and is live, then test image loading on iPhone. Never equate build success with visual QA success.
