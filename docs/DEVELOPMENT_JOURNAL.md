@@ -193,3 +193,16 @@ Before changing code:
 4. Make complete changes and validate them.
 5. Do not stop for routine decisions.
 6. Stop only for missing credentials/permissions or an unavoidable business/legal decision.
+
+
+## 2026-10-09 MagicPath design milestone
+- Created MagicPath project: Animalife Paraguay — Approved Storefront Design.
+- Project canvas: https://www.magicpath.ai/files/459271459794206720
+- Responsive storefront component preview: https://designs.magicpath.ai/v1/clever-flood-5220
+- Mobile app screen component preview: https://designs.magicpath.ai/v1/smooth-world-9042
+- Both MagicPath component builds completed successfully. They are design prototypes, not native mobile binaries.
+- Storefront prototype includes Spanish/Paraguay brand direction, responsive navigation, category imagery, featured product cards, story/CTA sections, mobile menu, search, cart count and responsive layouts.
+- Mobile prototype includes home, category browsing, product cards, cart count, tab navigation, search and a responsive mobile-first visual system.
+- Production homepage update: category cards now use animal/campo photographic URLs with a dark readability overlay. Commit: 587eab73301b3415f4d7fd17cb40750643b9db4a.
+- Important: category imagery is loaded from Unsplash URLs, so images require external network access. Product cards in MagicPath are illustrative mock data and must not be treated as verified inventory/pricing. The live storefront continues to use the real catalog/backend.
+- Remaining launch blockers: real Pagopar merchant credentials and controlled payment test; real courier integration/credentials; native iOS/Android signed builds and EAS credentials; final browser QA of external image URLs on production.
