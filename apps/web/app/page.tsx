@@ -70,9 +70,9 @@ export default async function Home(){
               <img className="hero-photo-bg hero-photo-pets" src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=1400&q=85" alt="Perro disfrutando del exterior" />
               <div className="hero-photo-caption"><span>PERROS</span><b>Compañeros de cada día</b></div>
             </div>
-            <div className="hero-small-photo hero-cat-photo"><img className="hero-photo-bg hero-photo-cat" src="/products/perros-gatos.svg" alt="" /><span>GATOS</span></div>
-            <div className="hero-small-photo hero-cow-photo"><img className="hero-photo-bg hero-photo-cow" src="/products/bovinos.svg" alt="" /><span>BOVINOS</span></div>
-            <div className="hero-small-photo hero-horse-photo"><img className="hero-photo-bg hero-photo-horse" src="/products/equinos.svg" alt="" /><span>EQUINOS</span></div>
+            <div className="hero-small-photo hero-cat-photo"><img className="hero-photo-bg hero-photo-cat" src={categoryPhotoUrl("gatos")} alt="Gato" /><span>GATOS</span></div>
+            <div className="hero-small-photo hero-cow-photo"><img className="hero-photo-bg hero-photo-cow" src={categoryPhotoUrl("bovinos")} alt="Bovinos" /><span>BOVINOS</span></div>
+            <div className="hero-small-photo hero-horse-photo"><img className="hero-photo-bg hero-photo-horse" src={categoryPhotoUrl("equinos")} alt="Equinos" /><span>EQUINOS</span></div>
             <div className="hero-orb">AL<span>·</span></div>
           </div>
         </div>
@@ -127,7 +127,7 @@ export default async function Home(){
     <section className="section story-section">
       <div className="container story-layout">
         <div className="story-image">
-          <img className="story-photo story-photo-field" src="/products/campo.svg" alt="Paisaje rural y soluciones para el campo" />
+          <img className="story-photo story-photo-field" src={categoryPhotoUrl("campo")} alt="Paisaje rural y soluciones para el campo" loading="lazy" />
           <div className="story-label">ANIMALIFE<br/><span>PARAGUAY</span></div>
         </div>
         <div className="story-copy">
