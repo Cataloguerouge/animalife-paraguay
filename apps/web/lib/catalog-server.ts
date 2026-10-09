@@ -5,7 +5,7 @@ import { products as fallbackProducts, categories as fallbackCategories } from "
 export type CatalogCategory = { name: string; icon: string; slug: string };
 
 const icons: Record<string,string> = {
-  perros:"🐕", gatos:"🐈", bovinos:"🐄", equinos:"🐎", campo:"🌾", ofertas:"%"
+  perros:"🐕", gatos:"🐈", bovinos:"🐄", equinos:"🐎", campo:"🌾", veterinaria:"✚", ofertas:"%"
 };
 
 const localImages: Record<string,string> = {
@@ -15,7 +15,7 @@ const localImages: Record<string,string> = {
 function mapProduct(row:any, categoryName:string):Product {
   const animal = row.animal as Product["animal"];
   const image = row.image_path
-    ? (/^https?:\\/\\//i.test(row.image_path)
+    ? (row.image_path.startsWith("http://") || row.image_path.startsWith("https://")
       ? row.image_path
       : `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/product-images/${row.image_path}`)
     : (localImages[row.slug] ?? "");
