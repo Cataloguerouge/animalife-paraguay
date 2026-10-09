@@ -1,5 +1,5 @@
 import Link from "next/link";
-import {formatPYG,ANIMALIFE_AI_HERO} from "@animalife/shared";
+import {formatPYG} from "@animalife/shared";
 import {getCatalogCategories,getCatalogProducts} from "../lib/catalog-server";
 import SiteHeader from "../components/SiteHeader";
 import SiteFooter from "../components/SiteFooter";
@@ -67,7 +67,7 @@ export default async function Home(){
 
           <div className="hero-gallery">
             <div className="hero-main-photo">
-              <img className="hero-photo-bg hero-photo-pets" src={ANIMALIFE_AI_HERO} alt="Perro y gato disfrutando del exterior" />
+              <img className="hero-photo-bg hero-photo-pets" src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=1400&q=85" alt="Perro disfrutando del exterior" />
               <div className="hero-photo-caption"><span>PERROS</span><b>Compañeros de cada día</b></div>
             </div>
             <div className="hero-small-photo hero-cat-photo"><img className="hero-photo-bg hero-photo-cat" src="/products/perros-gatos.svg" alt="" /><span>GATOS</span></div>
@@ -97,7 +97,7 @@ export default async function Home(){
         <div className="category-showcase premium-categories">
           {categories.filter(c=>c.name!=="Ofertas").slice(0,6).map(c=>
             <Link className="category-tile" href={"/catalog?category="+encodeURIComponent(c.name)} key={c.slug}>
-              <div className={categoryPhotoClass(c.slug)} style={{backgroundImage:`linear-gradient(0deg, rgba(17,42,29,.62), rgba(17,42,29,.04) 72%), url("${categoryPhotoUrl(c.slug)}")`,backgroundSize:"cover",backgroundPosition:"center"}} aria-hidden="true"></div>
+              <img className={categoryPhotoClass(c.slug)} src={categoryPhotoUrl(c.slug)} alt="" loading="lazy" />
               <div className="category-number">0{categories.filter(x=>x.name!=="Ofertas").slice(0,6).findIndex(x=>x.slug===c.slug)+1}</div>
               <div className="tile-copy"><b>{c.name}</b><small>Descubrir <span>↗</span></small></div>
             </Link>
