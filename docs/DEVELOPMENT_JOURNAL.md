@@ -244,3 +244,12 @@ Before changing code:
 - Commits: `24ae4655b566c99e83c2244d06c037df29b4f18a` (consistent category photo sources), `f00643dc5736a23046a165f846b9df606dca5c74` (remove legacy CSS overrides and stale paths).
 - Do not use or restore `/animalife/category-collage.webp`; it was never verified as a valid production asset. The old Render Static Site named `animalife-paraguay` is not the canonical service; `animalife-paraguay-web` remains the only intended production service. Service deletion must be performed in the correct Render workspace and only after confirming service identity.
 - Deployment/visual verification remains open: confirm the latest main commit builds and is live, then test image loading on iPhone. Never equate build success with visual QA success.
+
+
+## 2026-10-09 — Approved MagicPath source import staging
+
+- Created `approved-magicpath/` on `main` as an isolated staging directory, without touching the production Next.js/Expo app.
+- Added `approved-magicpath/README.md` and `approved-magicpath/source-manifest.json` with the canonical project/component IDs and preview URLs.
+- **The MagicPath source code itself is not downloaded yet.** Authenticated MagicPath agent calls are blocked by `EXTERNAL_AGENT_API_QUOTA_EXCEEDED` (50/50 calls used), and outbound DNS from the available runtime also failed. Public preview URLs are rendered previews, not source ZIPs.
+- Official export documentation describes downloading the codebase ZIP from each design's **Code → Download** action: https://www.magicpath.ai/documentation/features/code-export
+- Do not claim the staging marker is the source export. Do not replace or deploy the current app until the actual web/mobile source and assets are obtained, unpacked into `approved-magicpath/web/` and `approved-magicpath/mobile/`, and validated.
