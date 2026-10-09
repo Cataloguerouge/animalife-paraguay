@@ -182,3 +182,15 @@ body{background:var(--paper);letter-spacing:-.01em}
 @media(max-width:700px){
  .category-photo{background-size:200% 200%}
 }
+
+
+/* Image recovery safety override: use verified shared hero data and existing local artwork until dedicated photo files are verified. */
+.hero-photo-bg{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;background-image:none}
+.hero-photo-pets{object-position:center}
+.hero-photo-cat,.hero-photo-cow,.hero-photo-horse{object-fit:contain;background:none;padding:10%;background-color:#f5f5ed}
+.category-photo-perros-gatos,.category-photo-gatos,.category-photo-perros{background-image:url('/products/perros-gatos.svg')}
+.category-photo-bovinos{background-image:url('/products/bovinos.svg')}
+.category-photo-equinos{background-image:url('/products/equinos.svg')}
+.category-photo-campo{background-image:url('/products/campo.svg')}
+.category-photo-veterinario{background-image:url('/products/veterinario.svg')}
+.story-photo-field{display:block;width:100%;height:100%;object-fit:cover;background-image:none}
