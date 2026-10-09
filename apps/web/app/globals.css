@@ -161,36 +161,17 @@ body{background:var(--paper);letter-spacing:-.01em}
 
 .story-image img{object-position:78% center}
 
-/* 2026-10-09 photographic asset implementation: real local image, no data-URI placeholders */
-.hero-photo-bg{position:absolute;inset:0;background-image:url('/animalife/category-collage.webp');background-repeat:no-repeat;background-size:200% 200%;display:block}
-.hero-photo-pets{background-position:0% 0%}
-.hero-photo-cat{background-position:100% 0%}
-.hero-photo-cow{background-position:100% 0%}
-.hero-photo-horse{background-position:0% 100%}
-.hero-main-photo .hero-photo-pets{background-size:200% 200%;filter:saturate(.98) contrast(1.02)}
-.hero-small-photo .hero-photo-bg{transition:transform .7s cubic-bezier(.2,.8,.2,1)}
-.hero-small-photo:hover .hero-photo-bg{transform:scale(1.06)}
-.category-photo{display:block;position:absolute;inset:0;width:100%;height:100%;padding:0;background-image:url('/animalife/category-collage.webp');background-repeat:no-repeat;background-size:200% 200%;filter:saturate(.96) contrast(1.02);transition:transform .7s cubic-bezier(.2,.8,.2,1)}
-.category-photo-perros{background-position:0% 0%}
-.category-photo-gatos{background-position:0% 0%}
-.category-photo-bovinos{background-position:100% 0%}
-.category-photo-equinos{background-position:0% 100%}
-.category-photo-campo{background-position:100% 100%}
-.category-photo-veterinario{background-position:0% 0%}
+
+/* Canonical image rendering: use the actual img src, never legacy collage backgrounds. */
+.hero-main-photo img,.hero-small-photo img,.category-photo,.story-photo-field{display:block;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background-image:none;padding:0}
+.hero-main-photo img{object-position:43% center}
+.hero-cat-photo img{object-position:67% center}
+.hero-cow-photo img{object-position:86% center}
+.hero-horse-photo img{object-position:58% center}
+.category-photo-perros-gatos{object-position:78% center}
+.category-photo-bovinos{object-position:30% center}
+.category-photo-equinos{object-position:92% center}
+.category-photo-campo{object-position:8% center}
+.category-photo-veterinario{object-position:55% center}
+.story-photo-field{object-position:78% center}
 .premium-categories .category-tile:hover .category-photo{transform:scale(1.04)}
-.story-photo-field{display:block;width:100%;height:100%;background-image:url('/animalife/category-collage.webp');background-repeat:no-repeat;background-size:200% 200%;background-position:100% 100%;filter:saturate(.96) contrast(1.02)}
-@media(max-width:700px){
- .category-photo{background-size:200% 200%}
-}
-
-
-/* Image recovery safety override: use verified shared hero data and existing local artwork until dedicated photo files are verified. */
-.hero-photo-bg{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;background-image:none}
-.hero-photo-pets{object-position:center}
-.hero-photo-cat,.hero-photo-cow,.hero-photo-horse{object-fit:contain;background:none;padding:10%;background-color:#f5f5ed}
-.category-photo-perros-gatos,.category-photo-gatos,.category-photo-perros{background-image:url('/products/perros-gatos.svg')}
-.category-photo-bovinos{background-image:url('/products/bovinos.svg')}
-.category-photo-equinos{background-image:url('/products/equinos.svg')}
-.category-photo-campo{background-image:url('/products/campo.svg')}
-.category-photo-veterinario{background-image:url('/products/veterinario.svg')}
-.story-photo-field{display:block;width:100%;height:100%;object-fit:cover;background-image:none}
