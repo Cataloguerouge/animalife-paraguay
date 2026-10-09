@@ -4,8 +4,6 @@ import {getCatalogCategories,getCatalogProducts} from "../lib/catalog-server";
 import SiteHeader from "../components/SiteHeader";
 import SiteFooter from "../components/SiteFooter";
 
-const aiHero = ANIMALIFE_AI_HERO;
-
 function productVisual(product:any){
   if(product.image) return product.image;
   const animal=String(product.animal??"").toUpperCase();
