@@ -19,6 +19,15 @@ function ProductArt({product}:{product:any}){
   return <div className="product-art"><img src={productVisual(product)} alt="" /></div>
 }
 
+function categoryPhotoUrl(slug:string){
+  const s=slug.toLowerCase();
+  if(s.includes("bovino")) return "https://images.unsplash.com/photo-1516467508483-a7212f47fb29?auto=format&fit=crop&w=1000&q=85";
+  if(s.includes("equino")) return "https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?auto=format&fit=crop&w=1000&q=85";
+  if(s.includes("campo")) return "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1000&q=85";
+  if(s.includes("veter")) return "https://images.unsplash.com/photo-1628009368231-7bb7cfcb0def?auto=format&fit=crop&w=1000&q=85";
+  return "https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=1000&q=85";
+}
+
 function categoryPhotoClass(slug:string){
   const s=slug.toLowerCase();
   if(s.includes("bovino")) return "category-photo category-photo-bovinos";
@@ -86,7 +95,7 @@ export default async function Home(){
         <div className="category-showcase premium-categories">
           {categories.filter(c=>c.name!=="Ofertas").slice(0,5).map(c=>
             <Link className="category-tile" href={"/catalog?category="+encodeURIComponent(c.name)} key={c.slug}>
-              <div className={categoryPhotoClass(c.slug)} aria-hidden="true"></div>
+              <div className={categoryPhotoClass(c.slug)} style={{backgroundImage:`linear-gradient(0deg, rgba(17,42,29,.62), rgba(17,42,29,.04) 72%), url("${categoryPhotoUrl(c.slug)}")`,backgroundSize:"cover",backgroundPosition:"center"}} aria-hidden="true"></div>
               <div className="category-number">0{categories.filter(x=>x.name!=="Ofertas").slice(0,5).findIndex(x=>x.slug===c.slug)+1}</div>
               <div className="tile-copy"><b>{c.name}</b><small>Descubrir <span>↗</span></small></div>
             </Link>
